@@ -37,6 +37,8 @@ public:
 
 	void set_reuse_port(bool reuse_port);
 
+	int get_fd() { return m_sock; }
+
 private:
 	SOCKET m_sock = 0;
 };

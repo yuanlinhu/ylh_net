@@ -19,6 +19,10 @@ public:
 
 	void update();
 
+	int get_fd() { return m_sock->get_fd(); }
+
+	int get_events() { return m_events; }
+
 private:
 
 	int m_events = 0;
@@ -27,6 +31,5 @@ private:
 
 
 	Sock* m_sock = nullptr;
-	int m_fd;
 };
 

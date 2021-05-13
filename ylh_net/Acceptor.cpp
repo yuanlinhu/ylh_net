@@ -7,7 +7,7 @@ Acceptor::Acceptor(EventLoop* loop, int port, bool reuse_port)
 	:m_ownerEventLoop(loop)
 {
 	m_accept_sock = new Sock();
-	m_accept_sock->create_sock();
+	m_accept_sock->create_non_block_sock();
 	m_accept_sock->bind_sock(port);
 	m_accept_sock->set_reuse_addr(true);
 	m_accept_sock->set_reuse_port(reuse_port);

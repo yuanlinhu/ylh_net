@@ -27,17 +27,22 @@ public:
 
 	static bool init();
 
-	bool create_sock();
+	bool create_non_block_sock();
 	
 	bool bind_sock(int port);
 
 	bool start_listen();
 
 	void set_reuse_addr(bool on);
-
 	void set_reuse_port(bool reuse_port);
+	void setNonDelay();
+
 
 	int get_fd() { return m_sock; }
+
+private:
+	bool create_sock();
+
 
 private:
 	SOCKET m_sock = 0;

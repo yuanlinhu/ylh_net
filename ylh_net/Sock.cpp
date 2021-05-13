@@ -35,6 +35,24 @@ bool Sock::create_sock()
 	return true;
 }
 
+bool Sock::create_non_block_sock()
+{
+	create_sock();
+	setNonDelay();
+
+	return true;
+}
+
+
+void Sock::setNonDelay()
+{
+	BOOL nodelay = TRUE;
+	int ret = setsockopt(m_sock, IPPROTO_TCP, TCP_NODELAY, (char*)&nodelay, sizeof(nodelay));
+	if (ret == SOCKET_ERROR)
+	{
+	}
+}
+
 bool Sock::bind_sock(int port)
 {
 	sockaddr_in sin;

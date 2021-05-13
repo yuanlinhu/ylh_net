@@ -88,6 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\ylh_net;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,6 +148,7 @@
     <ClCompile Include="..\ylh_net\EventLoop.cpp" />
     <ClCompile Include="..\ylh_net\Poller.cpp" />
     <ClCompile Include="..\ylh_net\Sock.cpp" />
+    <ClCompile Include="Connector.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +157,7 @@
     <ClInclude Include="..\ylh_net\EventLoop.h" />
     <ClInclude Include="..\ylh_net\Poller.h" />
     <ClInclude Include="..\ylh_net\Sock.h" />
+    <ClInclude Include="Connector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

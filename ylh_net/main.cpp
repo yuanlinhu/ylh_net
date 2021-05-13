@@ -7,8 +7,10 @@ int main()
 {
 	Sock::init();
 
-	EventLoop loop;
-	Acceptor acceptor(&loop, 1111, true);
+	EventLoop event_loop;
+	Acceptor acceptor(&event_loop, 1111, true);
 	acceptor.listen();
+
+	event_loop.loop();
 	return 0;
 }

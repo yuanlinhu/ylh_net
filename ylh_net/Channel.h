@@ -21,6 +21,7 @@ public:
 
 	int get_fd() { return m_sock->get_fd(); }
 
+	void set_revent(int revt) { m_events = revt; }
 	int get_events() { return m_events; }
 
 private:

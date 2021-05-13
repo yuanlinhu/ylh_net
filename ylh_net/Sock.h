@@ -33,7 +33,11 @@ public:
 
 	bool start_listen();
 
+	void set_reuse_addr(bool on);
+
+	void set_reuse_port(bool reuse_port);
+
 private:
-	SOCKET m_sock_listen;
+	SOCKET m_sock = 0;
 };
 

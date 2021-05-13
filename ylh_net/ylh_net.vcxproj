@@ -144,11 +144,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Acceptor.cpp" />
+    <ClCompile Include="Channel.cpp" />
+    <ClCompile Include="EventLoop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Poller.cpp" />
     <ClCompile Include="Sock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Acceptor.h" />
+    <ClInclude Include="Channel.h" />
+    <ClInclude Include="EventLoop.h" />
     <ClInclude Include="Poller.h" />
     <ClInclude Include="Sock.h" />
   </ItemGroup>

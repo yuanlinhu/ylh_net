@@ -1,14 +1,14 @@
 #include <windows.h>
 #include "Sock.h"
+#include "EventLoop.h"
+#include "Acceptor.h"
 
 int main()
 {
-	//Socket::init();
+	Sock::init();
 
-	//Socket s;
-	//s.create_sock();
-	//s.bind_sock(12345);
-	//s.start_listen();
-	//system("pause");
+	EventLoop loop;
+	Acceptor acceptor(&loop, 1111, true);
+	acceptor.listen();
 	return 0;
 }

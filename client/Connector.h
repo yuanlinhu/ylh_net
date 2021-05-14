@@ -1,5 +1,8 @@
 #pragma once
 
+#include <string>
+using std::string;
+
 class EventLoop;
 class Channel;
 class Sock;
@@ -18,9 +21,10 @@ public:
 	explicit Connector(EventLoop* loop);
 	~Connector();
 
-	void start();
-	void connect();
+	void connect(string& ip, int port);
 
+private:
+	void start();
 
 private:
 	EventLoop* m_owner_loop = nullptr;

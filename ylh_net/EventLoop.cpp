@@ -1,5 +1,6 @@
 #include "EventLoop.h"
 #include "Poller.h"
+#include "Channel.h"
 
 
 EventLoop::EventLoop()
@@ -18,6 +19,11 @@ void EventLoop::loop()
 	{
 		m_active_channel_list.clear();
 		m_pooler->poll(1, m_active_channel_list);
+
+		for (auto iter : m_active_channel_list)
+		{
+			(iter)->handle_event();
+		}
 	}
 }
 

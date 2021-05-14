@@ -3,6 +3,9 @@
 #include "Connector.h"
 #include "Sock.h"
 
+#include <string>
+using std::string;
+
 int main()
 {
 	Sock::init();
@@ -10,7 +13,8 @@ int main()
 	EventLoop event_loop;
 
 	Connector conn(&event_loop);
-	conn.start();
+	conn.connect(string("192.168.1.133"), 4567);
+
 
 
 	event_loop.loop();

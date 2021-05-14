@@ -24,6 +24,15 @@ public:
 	void set_revent(int revt) { m_events = revt; }
 	int get_events() { return m_events; }
 
+
+	void handle_event();
+
+private:
+	void handle_read();
+	void handle_write();
+	void handle_close();
+	
+
 private:
 
 	int m_events = 0;

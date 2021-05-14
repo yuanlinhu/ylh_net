@@ -83,10 +83,7 @@ void Poller::fill_active_channels(int active_num, std::vector<Channel*>& active_
 		{
 			revent |= POLLOUT;
 		}
-		if (FD_ISSET(tmp_fd.fd, &m_read_fd))
-		{
-			revent |= POLLIN;
-		}
+
 
 		if (revent > 0)
 		{
@@ -101,7 +98,11 @@ void Poller::fill_active_channels(int active_num, std::vector<Channel*>& active_
 			Channel* channel = iter_channel->second;
 			channel->set_revent(revent);
 			active_channel_list.push_back(channel);
+		}
 
+		if (active_num <= 0)
+		{
+			break;
 		}
 	}
 }

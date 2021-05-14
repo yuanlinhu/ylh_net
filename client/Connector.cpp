@@ -16,16 +16,38 @@ void Connector::start()
 {
 	m_connect_sock = new Sock();
 	m_connect_sock->create_non_block_sock();
-
-	connect();
 }
 
-void Connector::connect()
+void Connector::connect(string& ip, int port)
 {
 	if (m_connect_state == kConnected)
 	{
 		return;
 	}
+
+	start();
+
+
+	hostent *host = gethostbyname(ip.c_str());
+	if (host == NULL)
+	{
+		return ;
+	}
+
+	// Setup our socket address structure
+	SOCKADDR_IN sin;
+	sin.sin_port = htons(port);
+	sin.sin_family = AF_INET;
+	sin.sin_addr.s_addr = *((unsigned long*)host->h_addr);
+
+
+	int ret = ::connect(m_connect_sock->get_socket(), (struct sockaddr*)&sin, sizeof(sockaddr));
+	if (ret != 0)
+	{
+		return;
+	}
+
+
 
 
 

@@ -38,7 +38,15 @@ public:
 	void setNonDelay();
 
 
-	int get_fd() { return m_sock; }
+	int get_fd()
+	{ 
+		return m_sock; 
+	}
+
+	SOCKET get_socket() 
+	{
+		return m_sock;
+	;}
 
 private:
 	bool create_sock();

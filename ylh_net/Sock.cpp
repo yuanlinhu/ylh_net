@@ -38,7 +38,7 @@ bool Sock::create_sock()
 bool Sock::create_non_block_sock()
 {
 	create_sock();
-	setNonDelay();
+	//setNonDelay();
 
 	return true;
 }
@@ -69,11 +69,11 @@ bool Sock::bind_sock(int port)
 
 bool Sock::start_listen()
 {
-	////开始监听  
-	//if (listen(m_sock_listen, 5) == SOCKET_ERROR)
-	//{
-	//	return false;
-	//}
+	//开始监听  
+	if (listen(m_sock, 5) == SOCKET_ERROR)
+	{
+		return false;
+	}
 
 	return true;
 }

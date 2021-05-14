@@ -1,6 +1,6 @@
 
 #include "EventLoop.h"
-#include "Connector.h"
+#include "TcpClient.h"
 #include "Sock.h"
 
 #include <string>
@@ -12,8 +12,8 @@ int main()
 
 	EventLoop event_loop;
 
-	Connector conn(&event_loop);
-	conn.connect(string("192.168.1.133"), 4567);
+	TcpClient client(&event_loop);
+	client.connect(string("192.168.1.133"), 4567);
 
 
 

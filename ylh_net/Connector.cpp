@@ -1,5 +1,7 @@
 #include "Connector.h"
 #include "Sock.h"
+#include "Channel.h"
+#include "ConnectChannel.h"
 
 
 Connector::Connector(EventLoop* loop)
@@ -14,8 +16,8 @@ Connector::~Connector()
 
 void Connector::start()
 {
-	m_connect_sock = new Sock();
-	m_connect_sock->create_non_block_sock();
+	//m_connect_sock = new Sock();
+	//m_connect_sock->create_non_block_sock();
 }
 
 void Connector::connect(string& ip, int port)
@@ -25,7 +27,8 @@ void Connector::connect(string& ip, int port)
 		return;
 	}
 
-	start();
+	m_connect_sock = new Sock();
+	m_connect_sock->create_non_block_sock();
 
 
 	hostent *host = gethostbyname(ip.c_str());
@@ -46,6 +49,10 @@ void Connector::connect(string& ip, int port)
 	{
 		return;
 	}
+
+
+	m_channel = new ConnectChannel(m_connect_sock, m_owner_loop);
+	m_channel->enableWriting();
 
 
 

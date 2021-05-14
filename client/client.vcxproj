@@ -101,7 +101,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_WINSOCK_DEPRECATED_NO_WARNINGS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../ylh_net;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -146,19 +146,31 @@
   <ItemGroup>
     <ClCompile Include="..\ylh_net\Acceptor.cpp" />
     <ClCompile Include="..\ylh_net\Channel.cpp" />
+    <ClCompile Include="..\ylh_net\ConnectChannel.cpp" />
+    <ClCompile Include="..\ylh_net\Connector.cpp" />
     <ClCompile Include="..\ylh_net\EventLoop.cpp" />
+    <ClCompile Include="..\ylh_net\main.cpp" />
     <ClCompile Include="..\ylh_net\Poller.cpp" />
     <ClCompile Include="..\ylh_net\Sock.cpp" />
-    <ClCompile Include="Connector.cpp" />
+    <ClCompile Include="..\ylh_net\TcpClient.cpp" />
+    <ClCompile Include="..\ylh_net\TcpConnection.cpp" />
+    <ClCompile Include="..\ylh_net\TcpServer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ylh_net\Acceptor.h" />
     <ClInclude Include="..\ylh_net\Channel.h" />
+    <ClInclude Include="..\ylh_net\ConnectChannel.h" />
+    <ClInclude Include="..\ylh_net\Connector.h" />
     <ClInclude Include="..\ylh_net\EventLoop.h" />
     <ClInclude Include="..\ylh_net\Poller.h" />
     <ClInclude Include="..\ylh_net\Sock.h" />
-    <ClInclude Include="Connector.h" />
+    <ClInclude Include="..\ylh_net\TcpClient.h" />
+    <ClInclude Include="..\ylh_net\TcpConnection.h" />
+    <ClInclude Include="..\ylh_net\TcpServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\ylh_net\ylh_net.vcxproj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

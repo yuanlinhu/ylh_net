@@ -25,6 +25,18 @@ void Channel::disableReading()
 	update();
 }
 
+void Channel::enableWriting()
+{
+	m_events |= kWriteEvent;
+	update();
+}
+
+void Channel::disableWriting()
+{
+	m_events &= ~kWriteEvent;
+	update();
+}
+
 
 void Channel::update()
 {
@@ -55,7 +67,11 @@ void Channel::handle_read()
 
 void Channel::handle_write()
 {
-
+	//auto conn = (new TcpConnection(loop_,
+	//	connName,
+	//	sockfd,
+	//	localAddr,
+	//	peerAddr));
 }
 
 void Channel::handle_close()

@@ -146,17 +146,27 @@
   <ItemGroup>
     <ClCompile Include="Acceptor.cpp" />
     <ClCompile Include="Channel.cpp" />
+    <ClCompile Include="ConnectChannel.cpp" />
+    <ClCompile Include="Connector.cpp" />
     <ClCompile Include="EventLoop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Poller.cpp" />
     <ClCompile Include="Sock.cpp" />
+    <ClCompile Include="TcpClient.cpp" />
+    <ClCompile Include="TcpConnection.cpp" />
+    <ClCompile Include="TcpServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Acceptor.h" />
     <ClInclude Include="Channel.h" />
+    <ClInclude Include="ConnectChannel.h" />
+    <ClInclude Include="Connector.h" />
     <ClInclude Include="EventLoop.h" />
     <ClInclude Include="Poller.h" />
     <ClInclude Include="Sock.h" />
+    <ClInclude Include="TcpClient.h" />
+    <ClInclude Include="TcpConnection.h" />
+    <ClInclude Include="TcpServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

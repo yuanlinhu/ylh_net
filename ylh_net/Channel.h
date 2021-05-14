@@ -17,6 +17,10 @@ public:
 	void enableReading();
 	void disableReading();
 
+	void enableWriting();
+	void disableWriting();
+	
+
 	void update();
 
 	int get_fd() { return m_sock->get_fd(); }
@@ -28,9 +32,9 @@ public:
 	void handle_event();
 
 private:
-	void handle_read();
-	void handle_write();
-	void handle_close();
+	virtual void handle_read();
+	virtual void handle_write();
+	virtual void handle_close();
 	
 
 private:
@@ -38,8 +42,6 @@ private:
 	int m_events = 0;
 
 	EventLoop* m_owner_loop = nullptr;
-
-
 	Sock* m_sock = nullptr;
 };
 

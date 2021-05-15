@@ -150,7 +150,6 @@
     <ClCompile Include="..\ylh_net\Connector.cpp" />
     <ClCompile Include="..\ylh_net\EventLoop.cpp" />
     <ClCompile Include="..\ylh_net\InetAddress.cpp" />
-    <ClCompile Include="..\ylh_net\main.cpp" />
     <ClCompile Include="..\ylh_net\Poller.cpp" />
     <ClCompile Include="..\ylh_net\Sock.cpp" />
     <ClCompile Include="..\ylh_net\TcpClient.cpp" />

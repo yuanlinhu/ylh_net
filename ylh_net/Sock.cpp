@@ -1,5 +1,5 @@
 #include "Sock.h"
-
+#include "InetAddress.h"
 
 
 Sock::Sock()
@@ -90,4 +90,23 @@ void Sock::set_reuse_port(bool reuse_port)
 	int opt_val = reuse_port ? 1 : 0;
 	//::setsockopt(m_sock, SOL_SOCKET, SO_REUSEPORT,
 	//	(char*)&opt_val, sizeof(opt_val));
+}
+
+
+int Sock::accept(InetAddress* peeraddr)
+{
+	struct sockaddr_in addr;
+	memset(&addr, 0, sizeof(addr));
+
+	socklen_t addrlen = static_cast<socklen_t>(sizeof(addr));
+	int connfd = ::accept(m_sock, (sockaddr*)&addr, &addrlen);
+	
+	BOOL nodelay = TRUE;
+	int ret = setsockopt(connfd, IPPROTO_TCP, TCP_NODELAY, (char*)&nodelay, sizeof(nodelay));
+
+	if (connfd > 0)
+	{
+		peeraddr->setSockAddrIn(addr);
+	}
+	return connfd;
 }

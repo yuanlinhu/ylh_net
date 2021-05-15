@@ -19,6 +19,8 @@
 #pragma comment(lib,"ws2_32")
 
 
+class InetAddress;
+
 class Sock
 {
 public:
@@ -36,7 +38,7 @@ public:
 	void set_reuse_addr(bool on);
 	void set_reuse_port(bool reuse_port);
 	void setNonDelay();
-
+	int accept(InetAddress* peeraddr);
 
 	int get_fd()
 	{ 

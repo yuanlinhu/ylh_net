@@ -29,6 +29,6 @@ void TcpClient::newConnection(int sockfd)
 
 	m_tcp_connection = new TcpConnection(sockfd, peerAddr, m_owner_loop);
 
-	m_tcp_connection->send(string("hello_server"));
+	//m_tcp_connection->send(string("hello_server"));
 	cout << "连接服务器成功 fd:" << sockfd << endl;
 }

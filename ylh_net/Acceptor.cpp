@@ -40,6 +40,8 @@ void Acceptor::handle_read(int fd)
 	InetAddress peerAddr;
 	int connfd = m_accept_sock->accept(&peerAddr);
 	cout << "接收一个连接请求 fd:" << connfd << endl;
+
+
 	if (connfd > 0)
 	{
 		if (newConnectionCallback_)

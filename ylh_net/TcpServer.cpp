@@ -36,5 +36,5 @@ void TcpServer::handle_connection(int sockfd, const InetAddress& addr)
 
 	m_map_tcp_connection[sockfd] = new_connection;
 
-	new_connection->send(string("hello"));
+	new_connection->send(string("hello_client"));
 }

@@ -65,11 +65,15 @@ void Connector::connect(string& ip, int port)
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = *((unsigned long*)host->h_addr);
 
-
+	int savedErrno = 0;
 	int ret = ::connect(m_connect_sock->get_socket(), (struct sockaddr*)&sin, sizeof(sockaddr));
 	if (ret != 0)
 	{
-		return;
+		savedErrno = GetLastError();
+		if (savedErrno != WSAEWOULDBLOCK)
+		{
+			return;
+		}
 	}
 
 

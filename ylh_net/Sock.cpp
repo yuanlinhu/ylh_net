@@ -38,12 +38,15 @@ bool Sock::create_sock()
 void Sock::set_sock(int fd)
 {
 	m_sock = fd;
+	setNonDelay();
+	setNonBlock();
 }
 
 bool Sock::create_non_block_sock()
 {
 	create_sock();
 	setNonDelay();
+	setNonBlock();
 
 	return true;
 }
@@ -109,9 +112,19 @@ int Sock::accept(InetAddress* peeraddr)
 	BOOL nodelay = TRUE;
 	int ret = setsockopt(connfd, IPPROTO_TCP, TCP_NODELAY, (char*)&nodelay, sizeof(nodelay));
 
+	u_long nonblock = 1;
+	int ret1 = ioctlsocket(connfd, FIONBIO, &nonblock);
+
 	if (connfd > 0)
 	{
 		peeraddr->setSockAddrIn(addr);
 	}
 	return connfd;
+}
+
+
+void Sock::setNonBlock()
+{
+	u_long nonblock = 1;
+	int ret = ioctlsocket(m_sock, FIONBIO, &nonblock);
 }

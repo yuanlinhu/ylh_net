@@ -40,6 +40,8 @@ public:
 	void setNonDelay();
 	int accept(InetAddress* peeraddr);
 
+	void setNonBlock();
+
 	int get_fd()
 	{ 
 		return m_sock; 

@@ -149,6 +149,7 @@
     <ClCompile Include="..\ylh_net\ConnectChannel.cpp" />
     <ClCompile Include="..\ylh_net\Connector.cpp" />
     <ClCompile Include="..\ylh_net\EventLoop.cpp" />
+    <ClCompile Include="..\ylh_net\InetAddress.cpp" />
     <ClCompile Include="..\ylh_net\main.cpp" />
     <ClCompile Include="..\ylh_net\Poller.cpp" />
     <ClCompile Include="..\ylh_net\Sock.cpp" />
@@ -159,10 +160,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ylh_net\Acceptor.h" />
+    <ClInclude Include="..\ylh_net\Callbacks.h" />
     <ClInclude Include="..\ylh_net\Channel.h" />
     <ClInclude Include="..\ylh_net\ConnectChannel.h" />
     <ClInclude Include="..\ylh_net\Connector.h" />
     <ClInclude Include="..\ylh_net\EventLoop.h" />
+    <ClInclude Include="..\ylh_net\InetAddress.h" />
     <ClInclude Include="..\ylh_net\Poller.h" />
     <ClInclude Include="..\ylh_net\Sock.h" />
     <ClInclude Include="..\ylh_net\TcpClient.h" />

@@ -149,6 +149,7 @@
     <ClCompile Include="ConnectChannel.cpp" />
     <ClCompile Include="Connector.cpp" />
     <ClCompile Include="EventLoop.cpp" />
+    <ClCompile Include="InetAddress.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Poller.cpp" />
     <ClCompile Include="Sock.cpp" />
@@ -158,10 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Acceptor.h" />
+    <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Channel.h" />
     <ClInclude Include="ConnectChannel.h" />
     <ClInclude Include="Connector.h" />
     <ClInclude Include="EventLoop.h" />
+    <ClInclude Include="InetAddress.h" />
     <ClInclude Include="Poller.h" />
     <ClInclude Include="Sock.h" />
     <ClInclude Include="TcpClient.h" />

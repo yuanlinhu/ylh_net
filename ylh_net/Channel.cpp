@@ -38,6 +38,12 @@ void Channel::disableWriting()
 }
 
 
+void Channel::disableAll()
+{
+	m_events = kNoneEvent;
+	update();
+}
+
 void Channel::update()
 {
 	m_owner_loop->updateChannel(this);
@@ -45,17 +51,19 @@ void Channel::update()
 
 void Channel::handle_event()
 {
-	if ((m_events&POLLHUP) && !(m_events&POLLIN))
-	{
-		handle_close();
-	}
 	if (m_events&(POLLIN | POLLPRI))
 	{
-		handle_read();
+		if (readCallback_)
+		{
+			readCallback_(0);
+		}
 	}
 	if (m_events&POLLOUT)
 	{
-		handle_write();
+		if (writeCallback_)
+		{
+			writeCallback_();
+		}
 	}
 
 }

@@ -31,3 +31,8 @@ void EventLoop::updateChannel(Channel* channel)
 {
 	m_pooler->updateChannel(channel);
 }
+
+void EventLoop::remove_channel(Channel* channel)
+{
+	m_pooler->remove_channel(channel);
+}

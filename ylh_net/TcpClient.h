@@ -17,6 +17,7 @@ public:
 
 	void connect(string& ip, int port);
 
+	void newConnection(int sockfd);
 
 private:
 	EventLoop*	m_owner_loop = nullptr;

@@ -1,5 +1,8 @@
 #pragma once
 
+#include <functional>
+//#include <timestamp.h>
+
 #include "Sock.h"
 
 class EventLoop;
@@ -10,6 +13,9 @@ const int kWriteEvent = POLLOUT;
 
 class Channel
 {
+	typedef std::function<void()> EventCallback;
+	typedef std::function<void(int)> ReadEventCallback;
+
 public:
 	Channel(Sock* sock, EventLoop* loop);
 	~Channel();
@@ -19,6 +25,8 @@ public:
 
 	void enableWriting();
 	void disableWriting();
+
+	void disableAll();
 	
 
 	void update();
@@ -30,6 +38,25 @@ public:
 
 
 	void handle_event();
+
+
+	void setReadCallback(const ReadEventCallback& cb)
+	{
+		readCallback_ = cb;
+	}
+	void setWriteCallback(const EventCallback& cb)
+	{
+		writeCallback_ = cb;
+	}
+	void setCloseCallback(const EventCallback& cb)
+	{
+		closeCallback_ = cb;
+	}
+	void setErrorCallback(const EventCallback& cb)
+	{
+		errorCallback_ = cb;
+	}
+
 
 private:
 	virtual void handle_read();
@@ -43,5 +70,12 @@ private:
 
 	EventLoop* m_owner_loop = nullptr;
 	Sock* m_sock = nullptr;
+
+
+
+	ReadEventCallback readCallback_;
+	EventCallback writeCallback_;
+	EventCallback closeCallback_;
+	EventCallback errorCallback_;
 };
 

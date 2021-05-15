@@ -33,6 +33,13 @@ void Poller::updateChannel(Channel* channel)
 	}
 }
 
+void Poller::remove_channel(Channel* channel)
+{
+	int fd = channel->get_fd();
+	m_pollFd_list.erase(fd);
+	m_channel_list.erase(fd);
+}
+
 void Poller::poll(int timeoutMs, std::vector<Channel*>& active_channel_list)
 {
 	FD_ZERO(&m_read_fd);

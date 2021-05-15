@@ -14,6 +14,7 @@ public:
 	~Poller();
 
 	void updateChannel(Channel* channel);
+	void remove_channel(Channel* channel);
 
 	void poll(int timeoutMs, std::vector<Channel*>& active_channel_list);
 

@@ -15,6 +15,7 @@ public:
 
 	void updateChannel(Channel* channel);
 
+	void remove_channel(Channel* channel);
 
 private:
 	Poller*	m_pooler;

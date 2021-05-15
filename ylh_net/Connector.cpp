@@ -30,6 +30,9 @@ void Connector::handle_writing()
 
 	m_connect_state = kConnected;
 
+	m_channel->disableAll();
+	m_owner_loop->remove_channel(m_channel);
+
 	int fd = m_channel->get_fd();
 
 	if (newConnectionCallback_)
@@ -38,8 +41,7 @@ void Connector::handle_writing()
 	}
 
 	//ÖØÖÃchannel£¬ ²¢´ÓpollerÉ¾³ý
-	m_channel->disableAll();
-	m_owner_loop->remove_channel(m_channel);
+	
 }
 
 void Connector::connect(string& ip, int port)
@@ -80,6 +82,7 @@ void Connector::connect(string& ip, int port)
 	m_channel = new Channel(m_connect_sock, m_owner_loop);
 	m_channel->setWriteCallback(std::bind(&Connector::handle_writing, this));
 	m_channel->enableWriting();
+	m_channel->enableReading();
 
 
 

@@ -48,7 +48,9 @@ public:
 	SOCKET get_socket() 
 	{
 		return m_sock;
-	;}
+	}
+
+	void set_sock(int fd);
 
 private:
 	bool create_sock();

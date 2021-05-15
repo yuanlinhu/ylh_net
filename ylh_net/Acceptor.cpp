@@ -3,6 +3,8 @@
 #include "Channel.h"
 #include <functional>
 #include "InetAddress.h"
+#include <iostream>
+using namespace std;
 
 Acceptor::Acceptor(EventLoop* loop, bool reuse_port)
 	:m_ownerEventLoop(loop)
@@ -15,6 +17,7 @@ Acceptor::Acceptor(EventLoop* loop, bool reuse_port)
 	m_accept_channel = new Channel(m_accept_sock, loop);
 
 	m_accept_channel->setReadCallback(std::bind(&Acceptor::handle_read, this,std::placeholders::_1));
+	cout << "开启accept fd:" << m_accept_sock->get_fd() << endl;
 }
 
 
@@ -36,6 +39,7 @@ void Acceptor::handle_read(int fd)
 
 	InetAddress peerAddr;
 	int connfd = m_accept_sock->accept(&peerAddr);
+	cout << "接收一个连接请求 fd:" << connfd << endl;
 	if (connfd > 0)
 	{
 		if (newConnectionCallback_)

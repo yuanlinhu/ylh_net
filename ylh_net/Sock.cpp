@@ -35,10 +35,15 @@ bool Sock::create_sock()
 	return true;
 }
 
+void Sock::set_sock(int fd)
+{
+	m_sock = fd;
+}
+
 bool Sock::create_non_block_sock()
 {
 	create_sock();
-	//setNonDelay();
+	setNonDelay();
 
 	return true;
 }

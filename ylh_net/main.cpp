@@ -4,17 +4,48 @@
 #include "Acceptor.h"
 #include "TcpServer.h"
 
+#include <iostream>
+#include <thread>
+#include <functional>
+#include "EventLoopThread.h"
+
+using namespace std;
+
+void print(EventLoop*)
+{
+	thread::id tid = std::this_thread::get_id();
+	cout << "threadId: " << tid << endl;
+}
+
+void test_event_loop()
+{
+
+	EventLoop event_loop;
+	TcpServer server(&event_loop);
+	server.listen(4567);
+	event_loop.loop();
+}
+
+void test_event_loop_thread()
+{
+	print(NULL);
+
+	{
+		EventLoopThread th1;
+
+		EventLoop* event_loop = th1.startLoop();
+		event_loop->runInLoop(std::bind(print, event_loop));
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+	}
+}
+
 int main()
 {
 	Sock::init();
 
-	EventLoop event_loop;
-	//Acceptor acceptor(&event_loop, 4567, true);
-	//acceptor.listen();
+	//test_event_loop();
 
-	TcpServer server(&event_loop);
-	server.listen(4567);
+	test_event_loop_thread();
 
-	event_loop.loop();
 	return 0;
 }

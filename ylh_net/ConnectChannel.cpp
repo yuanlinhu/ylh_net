@@ -3,7 +3,7 @@
 
 
 ConnectChannel::ConnectChannel(Sock* sock, EventLoop* loop)
-	:Channel(sock, loop)
+	:Channel(loop, sock)
 {
 
 }

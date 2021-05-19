@@ -17,7 +17,8 @@ class Channel
 	typedef std::function<void(int)> ReadEventCallback;
 
 public:
-	Channel(Sock* sock, EventLoop* loop);
+	Channel(EventLoop* loop, Sock* sock);
+	Channel(int fd, EventLoop* loop);
 	~Channel();
 
 	void enableReading();
@@ -27,6 +28,8 @@ public:
 	void disableWriting();
 
 	void disableAll();
+
+	void remove();
 	
 
 	void update();

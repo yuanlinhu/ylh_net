@@ -2,12 +2,18 @@
 #include "EventLoop.h"
 
 
-Channel::Channel(Sock* sock, EventLoop* loop)
+Channel::Channel(EventLoop* loop, Sock* sock)
 	:m_sock(sock)
 	,m_owner_loop(loop)
 {
 }
 
+Channel::Channel(int fd, EventLoop* loop)
+	: m_owner_loop(loop)
+{
+	m_sock = new Sock();
+	m_sock->set_sock(fd);
+}
 
 Channel::~Channel()
 {
@@ -42,6 +48,12 @@ void Channel::disableAll()
 {
 	m_events = kNoneEvent;
 	update();
+}
+
+void Channel::remove()
+{
+
+	m_owner_loop->remove_channel(this);
 }
 
 void Channel::update()

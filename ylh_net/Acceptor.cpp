@@ -14,7 +14,7 @@ Acceptor::Acceptor(EventLoop* loop, bool reuse_port)
 	m_accept_sock->set_reuse_addr(true);
 	m_accept_sock->set_reuse_port(reuse_port);
 
-	m_accept_channel = new Channel(m_accept_sock, loop);
+	m_accept_channel = new Channel(loop, m_accept_sock);
 
 	m_accept_channel->setReadCallback(std::bind(&Acceptor::handle_read, this,std::placeholders::_1));
 	cout << "¿ªÆôaccept fd:" << m_accept_sock->get_fd() << endl;

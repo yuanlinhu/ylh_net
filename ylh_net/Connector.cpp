@@ -79,7 +79,7 @@ void Connector::connect(string& ip, int port)
 	}
 
 
-	m_channel = new Channel(m_connect_sock, m_owner_loop);
+	m_channel = new Channel(m_owner_loop, m_connect_sock);
 	m_channel->setWriteCallback(std::bind(&Connector::handle_writing, this));
 	m_channel->enableWriting();
 	m_channel->enableReading();

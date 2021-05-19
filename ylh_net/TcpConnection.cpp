@@ -17,7 +17,7 @@ TcpConnection::TcpConnection(int fd, const InetAddress& addr, EventLoop* loop)
 	m_sock = new Sock();
 	m_sock->set_sock(fd);
 
-	m_channel = new Channel(m_sock, m_owner_loop);
+	m_channel = new Channel(m_owner_loop, m_sock);
 
 	m_channel->setReadCallback(std::bind(&TcpConnection::handleRead, this, std::placeholders::_1));
 	m_channel->setWriteCallback(std::bind(&TcpConnection::handleWrite, this));
